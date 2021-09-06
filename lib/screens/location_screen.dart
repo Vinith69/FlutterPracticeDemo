@@ -11,7 +11,13 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   List<FetchTime> locations = [
     FetchTime(locationUrl: "Asia/Hong_Kong", location: "China (Hong Kong)"),
-    FetchTime(locationUrl: "America/New_York", location: "USA (New York)")
+    FetchTime(locationUrl: "America/New_York", location: "USA (New York)"),
+    FetchTime(locationUrl: "Asia/Dubai", location: "Dubai"),
+    FetchTime(locationUrl: "Asia/Jakarta", location: "Indonesia"),
+    FetchTime(locationUrl: "Asia/Seoul", location: "Korea"),
+    FetchTime(locationUrl: "Europe/London", location: "London"),
+    FetchTime(locationUrl: "Europe/Moscow", location: "Russia"),
+    FetchTime(locationUrl: "Europe/Paris", location: "Paris"),
   ];
 
   void updateTheTime(int i) async {
