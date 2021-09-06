@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             result.length > 1
                 ? Text(
-                    "Current Time (Military Format) in " +
+                    "Current Time in " +
                         result['location'] +
                         " is " +
                         result['currentTime'],
