@@ -28,10 +28,11 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () async {
                 print("result before: " + result.toString());
                 result = await Navigator.pushNamed(context, "/location");
-                setState(() {
-                  result = result;
-                });
-                print("result after: " + result.toString());
+                if (result != null)
+                  setState(() {
+                    result = result;
+                  });
+                print(result != null);
               },
               icon: Icon(
                 Icons.location_on_outlined,
