@@ -26,13 +26,13 @@ class _HomeScreenState extends State<HomeScreen> {
               style: TextButton.styleFrom(
                   backgroundColor: Colors.black, padding: EdgeInsets.all(20)),
               onPressed: () async {
-                print("result before: " + result.toString());
+                // print("result before: " + result.toString());
                 result = await Navigator.pushNamed(context, "/location");
                 if (result != null)
                   setState(() {
                     result = result;
                   });
-                print(result != null);
+                // print(result != null);
               },
               icon: Icon(
                 Icons.location_on_outlined,
