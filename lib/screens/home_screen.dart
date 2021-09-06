@@ -12,6 +12,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  dynamic result = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,8 +25,13 @@ class _HomeScreenState extends State<HomeScreen> {
             TextButton.icon(
               style: TextButton.styleFrom(
                   backgroundColor: Colors.black, padding: EdgeInsets.all(20)),
-              onPressed: () {
-                Navigator.pushNamed(context, "/location");
+              onPressed: () async {
+                print("result before: " + result.toString());
+                result = await Navigator.pushNamed(context, "/location");
+                setState(() {
+                  result = result;
+                });
+                print("result after: " + result.toString());
               },
               icon: Icon(
                 Icons.location_on_outlined,
@@ -40,13 +46,21 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(
               height: 20.0,
             ),
-            Text(
-              "Current Time in " +
-                  widget.location +
-                  " is " +
-                  widget.currentTime,
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
-            ),
+            result.length > 1
+                ? Text(
+                    "Current Time in " +
+                        result['location'] +
+                        " is " +
+                        result['currentTime'],
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  )
+                : Text(
+                    "Current Time in " +
+                        widget.location +
+                        " is " +
+                        widget.currentTime,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                  ),
           ],
         ),
       ),

@@ -9,9 +9,19 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  List locations = [
-    FetchTime(locationUrl: "Asia/Hong_Kong", location: "China (Hong Kong)")
+  List<FetchTime> locations = [
+    FetchTime(locationUrl: "Asia/Hong_Kong", location: "China (Hong Kong)"),
+    FetchTime(locationUrl: "America/New_York", location: "USA (New York)")
   ];
+
+  void updateTheTime(int i) async {
+    FetchTime fetchTime = FetchTime(
+        location: locations[i].location, locationUrl: locations[i].locationUrl);
+    String currentTime = await fetchTime.getData();
+    Navigator.pop(context,
+        {'currentTime': currentTime, 'location': locations[i].location});
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +44,7 @@ class _LocationScreenState extends State<LocationScreen> {
                 child: InkWell(
                   splashColor: Colors.blueGrey[900],
                   onTap: () {
-                    print(locations[i].location.toString());
+                    updateTheTime(i);
                   },
                   child: Card(
                     child: Center(
